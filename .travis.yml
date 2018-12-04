@@ -1,0 +1,13 @@
+sudo: required
+language: bash
+env:
+  global:
+  - IMAGE_NAME=gableroux/unity3d:2017.3.1f1
+services:
+- docker
+before_install:
+- docker pull $IMAGE_NAME
+jobs:
+  include:
+  - stage: test
+    script: chmod +x *.sh && ./docker_run.sh
